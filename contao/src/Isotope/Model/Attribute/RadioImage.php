@@ -11,11 +11,9 @@
 
 namespace Isotope\Model\Attribute;
 
-use Haste\Input\Input;
 use Isotope\Interfaces\IsotopeAttribute;
 use Isotope\Interfaces\IsotopeAttributeForVariants;
 use Isotope\Interfaces\IsotopeProduct;
-use Isotope\Model\AttributeOption;
 use Isotope\Model\Gallery;
 use Isotope\Model\Product;
 
