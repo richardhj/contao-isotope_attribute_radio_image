@@ -119,8 +119,11 @@ class RadioImage extends AbstractAttributeWithOptions implements IsotopeAttribut
 				array('gallery' => $this->radioImageGallery) # Provide the gallery's id in the config array
 			);
 
-			// Replace label with image
-			$arrOption['label'] = $objGallery->generateMainImage();
+			// Wrap label in span with css class
+			$arrOption['label'] = sprintf('<span class="attribute-label">%s</span>', $arrOption['label']);
+
+			// Add image to label
+			$arrOption['label'] .= PHP_EOL . $objGallery->generateMainImage();
 
 			return $arrOption;
 
