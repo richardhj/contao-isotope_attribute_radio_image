@@ -70,12 +70,23 @@ class RadioImage extends AbstractAttributeWithOptions implements IsotopeAttribut
 	 */
 	public function saveToDCA(array &$arrData)
 	{
-		if (TL_MODE == 'BE')
+		$this->multiple = false;
+
+		parent::saveToDCA($arrData);
+
+		if ('attribute' === $this->optionsSource)
 		{
-			SelectMenu::saveToDca($arrData);
+			$arrData['fields'][$this->field_name]['sql'] = "varchar(255) NOT NULL default ''";
+		}
+		else
+		{
+			$arrData['fields'][$this->field_name]['sql'] = "int(10) NOT NULL default '0'";
 		}
 
-		RadioButton::saveToDCA($arrData);
+		if ($this->fe_filter)
+		{
+			$arrData['config']['sql']['keys'][$this->field_name] = 'index';
+		}
 	}
 
 
