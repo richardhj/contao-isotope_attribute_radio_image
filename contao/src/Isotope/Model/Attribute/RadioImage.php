@@ -110,6 +110,11 @@ class RadioImage extends AbstractAttributeWithOptions implements IsotopeAttribut
 
 		// Fetch all product's variants and make the accessible via the attribute value in an array
 		$objVariants = Product::findAvailableByIds($objProduct->getVariantIds());
+
+        if (null === $objVariants) {
+            return parent::getOptionsForWidget($objProduct);
+        }
+        
 		/** @var IsotopeProduct[] $arrVariants */
 		$arrVariants = array_combine($objVariants->fetchEach($this->field_name), $objVariants->getModels());
 
