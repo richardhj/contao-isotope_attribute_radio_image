@@ -56,10 +56,24 @@ class RadioImage extends AbstractAttributeWithOptions implements IsotopeAttribut
 	{
 		if (TL_MODE == 'BE')
 		{
-			return SelectMenu::prepareOptionsWizard($objWidget, $arrColumns);
+			// Behave as select menu, this code is copied from the SelectMenu class
+			if ($this->isVariantOption())
+			{
+				unset($arrColumns['default'], $arrColumns['group']);
+			}
+
+			return $arrColumns;
 		}
 
-		return RadioButton::prepareOptionsWizard($objWidget, $arrColumns);
+		// Behave as a radio button, this code is copied from the RadioButton class
+        unset($arrColumns['group']);
+
+        if ($this->isVariantOption())
+		{
+			unset($arrColumns['default']);
+        }
+
+        return $arrColumns;
 	}
 
 
