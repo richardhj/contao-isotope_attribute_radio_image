@@ -23,8 +23,9 @@
   },
   "require": {
     "php": "^5.5 || ^7.0",
-    "contao/core": ">=3.1",
-    "isotope/isotope-core": "^2.3"
+    "contao/core-bundle": "^3.1 || ^4.2",
+    "isotope/isotope-core": "^2.3",
+    "contao-community-alliance/composer-plugin": "~2.4 || ~3.0"
   },
   "extra": {
     "contao": {
